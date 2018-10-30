@@ -7,7 +7,7 @@ public class Generace {
 
     public Generace(int quantity) {
         sidla = new ArrayList<>();
-        Sidlo hlavni = new Sidlo(SidlaVycet.SIDLO_HLAVNI, "Hlavni");
+        Sidlo hlavni = new Sidlo(SidlaVycet.SIDLO_HLAVNI, "Hlavni sidlo");
         sidla.add(hlavni);
         this.quantity = quantity;
 
