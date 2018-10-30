@@ -32,7 +32,7 @@ public class Generace {
         g.generuj((int) (g.getQuantity()*0.15), SidlaVycet.SIDLO_SIZE_4);
         g.generuj((int) (g.getQuantity()*0.1), SidlaVycet.SIDLO_SIZE_5);
         g.generuj((int) (g.getQuantity()*0.05), SidlaVycet.SIDLO_SIZE_6);
-        g.generuj(g.getQuantity()-g.getSidla().size()+1, SidlaVycet.SIDLO_SIZE_3);
+        g.generuj(g.getQuantity() - g.getSidla().size() + 1, SidlaVycet.SIDLO_SIZE_3);
         for(int i = 0; i < g.getSidla().size(); i++) {
             System.out.print(g.sidla.get(i).toString() + "\n");
         }
