@@ -9,7 +9,6 @@ public class Sidlo {
     }
 
     public String toString() {
-
         return name + ", velikost: " + size;
     }
 }
