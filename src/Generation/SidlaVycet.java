@@ -1,0 +1,5 @@
+package Generation;
+
+public enum SidlaVycet {
+    SIDLO_HLAVNI, SIDLO_SIZE_1, SIDLO_SIZE_2, SIDLO_SIZE_3, SIDLO_SIZE_4, SIDLO_SIZE_5, SIDLO_SIZE_6
+}
