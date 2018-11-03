@@ -39,7 +39,7 @@ public class EdgeGenerator {
                 Edge edge = new Edge(startPosition, endPosition, edgeWeight);
                 edges.add(edge);
                 endPositions.add(endPosition);
-                System.out.println(edges.indexOf(edge)+1 + " " + edge.toString()); //pomocny vypis
+                //System.out.println(edges.indexOf(edge)+1 + " " + edge.toString()); //pomocny vypis
 
             }
             endPositions.clear();
