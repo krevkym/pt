@@ -26,14 +26,35 @@ public class SidlaGenerace {
         int quantityLocal = quantity;
         for(int j = 0; j < 7; j++) {
             switch (j) {
-                case 0: quantityLocal = (int) (quantity * 0.25); type = SidlaVycet.SIDLO_SIZE_1; break;
-                case 1: quantityLocal = (int) (quantity * 0.25); type = SidlaVycet.SIDLO_SIZE_2; break;
-                case 2: quantityLocal = (int) (quantity * 0.2); type = SidlaVycet.SIDLO_SIZE_3; break;
-                case 3: quantityLocal = (int) (quantity * 0.15); type = SidlaVycet.SIDLO_SIZE_4; break;
-                case 4: quantityLocal = (int) (quantity * 0.1); type = SidlaVycet.SIDLO_SIZE_5; break;
-                case 5: quantityLocal = (int) (quantity * 0.05); type = SidlaVycet.SIDLO_SIZE_6; break;
-                case 6: quantityLocal = quantity - sidla.size(); type = SidlaVycet.SIDLO_SIZE_3; break;
-                default: type = SidlaVycet.SIDLO_SIZE_2;
+                case 0:
+                    quantityLocal = (int) (quantity * 0.25);
+                    type = SidlaVycet.SIDLO_SIZE_1;
+                    break;
+
+                case 1:
+                    quantityLocal = (int) (quantity * 0.25);
+                    type = SidlaVycet.SIDLO_SIZE_2;
+                    break;
+                case 2:
+                    quantityLocal = (int) (quantity * 0.2);
+                    type = SidlaVycet.SIDLO_SIZE_3;
+                    break;
+                case 3:
+                    quantityLocal = (int) (quantity * 0.15);
+                    type = SidlaVycet.SIDLO_SIZE_4;
+                    break;
+                case 4:
+                    quantityLocal = (int) (quantity * 0.1);
+                    type = SidlaVycet.SIDLO_SIZE_5;
+                    break;
+                case 5:
+                    quantityLocal = (int) (quantity * 0.05);
+                    type = SidlaVycet.SIDLO_SIZE_6;
+                    break;
+                default:
+                    quantityLocal = quantity - sidla.size();
+                    type = SidlaVycet.SIDLO_SIZE_3;
+                    break;
             }
 
             for(int i = 0; i < quantityLocal; i++) {
