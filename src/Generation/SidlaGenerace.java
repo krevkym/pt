@@ -7,6 +7,7 @@ import java.util.Random;
 public class SidlaGenerace {
 
     private ArrayList<Sidlo> sidla;
+    private ArrayList<Point2D> positions = new ArrayList<>();
     private int quantity;
 
     private int width;
@@ -35,9 +36,9 @@ public class SidlaGenerace {
     public void generate() {
         String name = "Sidlo_";
         SidlaVycet type;
-        int quantityLocal = quantity;
+        int quantityLocal;
         for(int j = 0; j < 7; j++) {
-            switch (j) {
+            switch(j) {
                 case 0:
                     quantityLocal = (int) (quantity * 0.25);
                     type = SidlaVycet.SIDLO_SIZE_1;
@@ -77,19 +78,20 @@ public class SidlaGenerace {
     }
 
     private Point2D generatePosition() {
-        int x = random.nextInt(this.width); // Mozna budouci sirka platna, kdybysme chteli vykreslovat
-        int y = random.nextInt(this.height); // Mozna budouci vyska platna, kdybysme chteli vykreslovat
+        int x = random.nextInt(width); // Mozna budouci sirka platna, kdybysme chteli vykreslovat
+        int y = random.nextInt(height); // Mozna budouci vyska platna, kdybysme chteli vykreslovat
         Point2D position = new Point2D.Double(x, y);
 
-        for (Sidlo sidlo: sidla) {
-            double distance = position.distance(sidlo.getPosition());
-            while(distance < 20) {
-                x = random.nextInt(this.width);
-                y = random.nextInt(this.height);
+        for(int i = 0; i < sidla.size(); i++) {
+            if(position.distance(sidla.get(i).getPosition()) < 5) {
+                x = random.nextInt(width);
+                y = random.nextInt(height);
                 position = new Point2D.Double(x, y);
-                distance = position.distance(sidlo.getPosition());
+                i = 0;
             }
+
         }
+        positions.add(position);
         return position;
     }
 

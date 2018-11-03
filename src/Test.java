@@ -2,6 +2,7 @@ import Generation.Edge;
 import Generation.EdgeGenerator;
 import Generation.SidlaGenerace;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -27,8 +28,10 @@ public class Test {
 
         ArrayList<Edge> edges = eg.getEdges();
 
-        for (Edge edge: edges) {
+       /* for (Edge edge: edges) {
             System.out.print(edge.toString() + " n. " + (edges.indexOf(edge) + 1) + "\n");
-        }
+        }*/
+
+
     }
 }
