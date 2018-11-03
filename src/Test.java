@@ -31,8 +31,8 @@ public class Test {
 
         ArrayList<Edge> edges = eg.getEdges();
 
-        for (Edge edge: edges) {
-            System.out.print(edge.toString() + "\n");
-        }
+        /*for (Edge edge: edges) {
+            System.out.print(edge.toString() + " n. " + edges.indexOf(edge) + "\n");
+        }*/
     }
 }

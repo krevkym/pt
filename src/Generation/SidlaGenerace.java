@@ -9,6 +9,7 @@ public class SidlaGenerace {
     private ArrayList<Sidlo> sidla;
     private int quantity;
 
+
     private static Random random;
 
     public SidlaGenerace(int quantity) {
@@ -31,10 +32,21 @@ public class SidlaGenerace {
     }
 
     private Point2D generatePosition() {
-        int x = random.nextInt(800); // Mozna budouci sirka platna, kdybysme chteli vykreslovat
-        int y = random.nextInt(600); // Mozna budouci vyska platna, kdybysme chteli vykreslovat
+        int x = random.nextInt(400); // Mozna budouci sirka platna, kdybysme chteli vykreslovat
+        int y = random.nextInt(400); // Mozna budouci vyska platna, kdybysme chteli vykreslovat
+        Point2D position = new Point2D.Double(x, y);
 
-        return new Point2D.Double(x, y);
+        for (Sidlo sidlo: sidla) {
+            double distance = position.distance(sidlo.getPosition());
+            while(distance < 20) {
+                x = random.nextInt(400);
+                y = random.nextInt(400);
+                position = new Point2D.Double(x, y);
+                distance = position.distance(sidlo.getPosition());
+            }
+        }
+
+        return position;
     }
 
     public ArrayList<Sidlo> getSidla() {
