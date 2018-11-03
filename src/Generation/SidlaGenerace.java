@@ -9,21 +9,19 @@ public class SidlaGenerace {
     private ArrayList<Sidlo> sidla;
     private int quantity;
 
+    private Random random;
 
-    private static Random random;
-
-    public SidlaGenerace(int quantity) {
-        sidla = new ArrayList<>();
+    public SidlaGenerace(int quantity, Random random) {
+        this.sidla = new ArrayList<>();
         Sidlo hlavni = new Sidlo(SidlaVycet.SIDLO_HLAVNI, "Hlavni sidlo", new Point2D.Double(250, 250));
-        sidla.add(hlavni);
+        this.sidla.add(hlavni);
         this.quantity = quantity;
+        this.random = random;
 
     }
 
     public void generuj(int count, SidlaVycet typ) {
         String name = "Sidlo_";
-
-        random = new Random();
 
         for(int i = 0; i < count; i++) {
             Sidlo sidlo = new Sidlo(typ, name + (sidla.size()), generatePosition());

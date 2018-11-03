@@ -8,11 +8,15 @@ public class EdgeGenerator {
 
     private ArrayList<Edge> edges;
 
-    private static Random random;
+    private Random random;
+
+
+    public EdgeGenerator(Random random) {
+        this.random = random;
+    }
 
     public void generate(ArrayList<Sidlo> sidla) {
         Sidlo randomSidlo;
-        random = new Random();
 
         Point2D startPosition;
         Point2D endPosition;
