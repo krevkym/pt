@@ -24,9 +24,12 @@ public class EdgeGenerator {
         edges = new ArrayList<>();
         ArrayList<Point2D> endPositions = new ArrayList<>();
 
+        int edgeCount;
+
         for (Sidlo sidlo: sidla) {
             startPosition = sidlo.getPosition();
-            for(int i = 0; i < 200; i++) {
+            edgeCount = 200 + random.nextInt(200);
+            for(int i = 0; i < edgeCount; i++) {
                 randomSidlo = sidla.get(random.nextInt(sidla.size()));
                 endPosition = randomSidlo.getPosition();
                 int edgeWeight = calculateWeight(startPosition, endPosition);

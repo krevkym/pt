@@ -11,10 +11,11 @@ public class Test {
         if((Integer.parseInt(args[0]) < 500) || (Integer.parseInt(args[0]) > 2000))
             throw new IllegalArgumentException(String.format(
                     "Incorrect number of mansions: %s!!!", args[0]));
+
         Random random = new Random();
+
         SidlaGenerace sg = new SidlaGenerace(Integer.parseInt(args[0]), random);
         // Collections.shuffle(sg.getSidla());
-        // tuhle generaci by to chtelo udelat na jedno zavolani, podobne jako to mam s tema hranama, pokud je to mozne...
         sg.generate();
         for(int i = 0; i < sg.getSidla().size(); i++) {
             System.out.print(sg.getSidla().get(i).toString() + "\n");
@@ -26,8 +27,8 @@ public class Test {
 
         ArrayList<Edge> edges = eg.getEdges();
 
-        /*for (Edge edge: edges) {
-            System.out.print(edge.toString() + " n. " + edges.indexOf(edge) + "\n");
-        }*/
+        for (Edge edge: edges) {
+            System.out.print(edge.toString() + " n. " + (edges.indexOf(edge) + 1) + "\n");
+        }
     }
 }
