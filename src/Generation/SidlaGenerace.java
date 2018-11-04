@@ -7,7 +7,7 @@ import java.util.Random;
 public class SidlaGenerace {
 
     private ArrayList<Sidlo> sidla;
-    private ArrayList<Point2D> positions = new ArrayList<>();
+    //private ArrayList<Point2D> positions = new ArrayList<>();
     private int quantity;
 
     private int width;
@@ -91,7 +91,7 @@ public class SidlaGenerace {
             }
 
         }
-        positions.add(position);
+        //positions.add(position);
         return position;
     }
 

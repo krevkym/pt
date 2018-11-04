@@ -1,10 +1,7 @@
 package Generation;
 
 import java.awt.geom.Point2D;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -46,7 +43,7 @@ public class EdgeGenerator {
                 Edge edge = new Edge(startPosition, endPosition, edgeWeight);
                 edges.add(edge);
                 endPositions.add(endPosition);
-              //  wDistanceMatrix[sidla.indexOf(sidlo)][sidla.indexOf(randomSidlo)] = edgeWeight;
+                wDistanceMatrix[sidla.indexOf(sidlo)][sidla.indexOf(randomSidlo)] = edgeWeight;
                 //System.out.println(edges.indexOf(edge)+1 + " " + edge.toString()); //pomocny vypis
             }
             endPositions.clear();
@@ -86,15 +83,15 @@ public class EdgeGenerator {
         FileWriter fw = null;
         try {
             fw = new FileWriter(matrixFile);
-            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(fw);
             for(int i = 0; i < wDistanceMatrix.length; i++) {
-               // bw.write(i + " ");
                 for (int j = 0; j < wDistanceMatrix.length; j++) {
-                    bw.write(wDistanceMatrix[i][j] + ";");
-
+                    pw.write(wDistanceMatrix[i][j] + ";");
                 }
-                bw.write("\n");
+                fw.write("\n");
             }
+            pw.close();
+            fw.close();
 
         } catch (IOException e) {
             e.printStackTrace();
