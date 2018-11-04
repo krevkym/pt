@@ -28,7 +28,8 @@ public class SidlaGenerace {
             this.height = 400;
         }
         this.sidla = new ArrayList<>();
-        Sidlo hlavni = new Sidlo(SidlaVycet.SIDLO_HLAVNI, "Hlavni sidlo", new Point2D.Double(width / 2, height / 2));
+        Sidlo hlavni = new Sidlo(SidlaVycet.SIDLO_HLAVNI, "Hlavni sidlo",
+                new Point2D.Double(width / 2, height / 2));
         this.sidla.add(hlavni);
         this.random = random;
     }
@@ -71,7 +72,8 @@ public class SidlaGenerace {
             }
 
             for(int i = 0; i < quantityLocal; i++) {
-                Sidlo sidlo = new Sidlo(type, name + (sidla.size()), generatePosition());
+                Sidlo sidlo = new Sidlo(type, name + (sidla.size()),
+                        generatePosition(), generateUnloadingWindow());
                 sidla.add(sidlo);
             }
         }
@@ -93,6 +95,12 @@ public class SidlaGenerace {
         }
         //positions.add(position);
         return position;
+    }
+
+    private int generateUnloadingWindow() {
+        int offset = 28800; // 8:00 in seconds
+
+        return offset + random.nextInt(43200);
     }
 
     public ArrayList<Sidlo> getSidla() {
