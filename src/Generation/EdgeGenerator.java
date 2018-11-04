@@ -11,6 +11,7 @@ public class EdgeGenerator {
     private ArrayList<Edge> edges;
 
     private Random random;
+
     private int[][] wDistanceMatrix;
     public EdgeGenerator(Random random) {
         this.random = random;
@@ -97,6 +98,10 @@ public class EdgeGenerator {
             e.printStackTrace();
         }
 
+    }
+
+    public int[][] getwDistanceMatrix() {
+        return wDistanceMatrix;
     }
 
 }
