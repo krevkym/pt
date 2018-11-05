@@ -2,9 +2,11 @@ package Generation;
 
 public class Order {
 
-    private Sidlo destination;
+    private City destination;
+    private int amount;
 
-    public Order(Sidlo destination) {
+    public Order(City destination, int amount) {
         this.destination = destination;
+        this.amount = amount;
     }
 }

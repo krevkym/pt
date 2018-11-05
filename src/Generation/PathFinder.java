@@ -5,14 +5,16 @@ import java.util.Collections;
 
 public class PathFinder {
 
-    private int[][] matrix;
-    private int[][] matrix2;
-    private int cost = 0;
+    private int[][] matrixOfPredecessors;
+    private int[][] distanceMatrix;
+    private int cost;
+
     private ArrayList<Integer> path = new ArrayList<>();
 
-    public PathFinder(int[][] matrix) {
-        this.matrix2 = matrix;
-        this.matrix = matrix;
+    public PathFinder(int[][] matrixOfPredecessors) {
+        this.matrixOfPredecessors = matrixOfPredecessors;
+        this.distanceMatrix = matrixOfPredecessors;
+        cost = 0;
     }
 
     private int[][] createInitialMatrix(int[][] d) {
@@ -28,8 +30,6 @@ public class PathFinder {
         }
         return p;
     }
-
-
 
     public void createMatrixOfPredecessors(int[][] d) {
         for (int i = 0; i < d.length; i++) {
@@ -55,29 +55,32 @@ public class PathFinder {
                 }
             }
         }
-        this.matrix = p;
+        this.matrixOfPredecessors = p;
     }
 
-    public ArrayList<Integer> findPath(int start, int end) {
-        if(path.size() == 0) {
-            path.add(end);
-        }
-        if(start == end) {
-            return path;
-        }
-        else if(matrix[start][end] == 0) {
-            return null;
-        }
-        else {
-            cost += matrix2[start][end];
-            path.add(matrix[start][end]);
-            findPath(start, matrix[start][end]);
-            Collections.reverse(path);
-            return path;
-        }
+    public void findPath(int start, int end) {
+            if(path.size() == 0) {
+                path.add(end);
+            }
+            if(start == end) {
+                Collections.reverse(path);
+            } else if(matrixOfPredecessors[start][end] != 0) {
+                cost += distanceMatrix[start][end];
+                path.add(matrixOfPredecessors[start][end]);
+                findPath(start, matrixOfPredecessors[start][end]);
+            }
     }
 
     public int getCost() {
         return cost;
+    }
+
+    public ArrayList<Integer> getPath() {
+        return path;
+    }
+
+    public void clearPath() {
+        this.path.clear();
+        this.cost = 0;
     }
 }
