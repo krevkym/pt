@@ -29,55 +29,56 @@ public class CitiesGenerator {
             this.width = 250;
             this.height = 250;
         } else {
-            this.width = 400;
-            this.height = 400;
+            this.width = 300;
+            this.height = 300;
         }
         this.cities = new ArrayList<>();
-        City mainCity = new City(CityEnum.MAIN_CITY, "Main city",
+        City mainCity = new City(0, "Main city",
                 new Point2D.Double(width / 2.0, height / 2.0));
         this.cities.add(mainCity);
         this.random = random;
     }
 
     public void generate() {
+        System.out.println("Cities generation");
         String name = "City_";
-        CityEnum type;
+        int sizeOfCity;
         int quantityLocal;
         for(int j = 0; j < 7; j++) {
             switch(j) {
                 case 0:
                     quantityLocal = (int) (quantity * 0.25);
-                    type = CityEnum.CITY_SIZE_1;
+                    sizeOfCity = 1;
                     break;
 
                 case 1:
                     quantityLocal = (int) (quantity * 0.25);
-                    type = CityEnum.CITY_SIZE_2;
+                    sizeOfCity = 2;
                     break;
                 case 2:
                     quantityLocal = (int) (quantity * 0.2);
-                    type = CityEnum.CITY_SIZE_3;
+                    sizeOfCity = 3;
                     break;
                 case 3:
                     quantityLocal = (int) (quantity * 0.15);
-                    type = CityEnum.CITY_SIZE_4;
+                    sizeOfCity = 4;
                     break;
                 case 4:
                     quantityLocal = (int) (quantity * 0.1);
-                    type = CityEnum.CITY_SIZE_5;
+                    sizeOfCity = 5;
                     break;
                 case 5:
                     quantityLocal = (int) (quantity * 0.05);
-                    type = CityEnum.CITY_SIZE_6;
+                    sizeOfCity = 6;
                     break;
                 default:
                     quantityLocal = quantity - cities.size() + 1;
-                    type = CityEnum.CITY_SIZE_3;
+                    sizeOfCity = 3;
                     break;
             }
 
             for(int i = 0; i < quantityLocal; i++) {
-                City city = new City(type, name + (cities.size()),
+                City city = new City(sizeOfCity, name + (cities.size()),
                         generatePosition(), generateUnloadingWindow());
                 cities.add(city);
             }
@@ -89,9 +90,9 @@ public class CitiesGenerator {
         try {
             FileWriter fw = new FileWriter(new File(fileName));
             PrintWriter pw = new PrintWriter(fw);
-            int size = 0;
+            //int size = 0;
             for(City city: cities) {
-                switch (city.getSize()) {
+                /*switch (city.getSize()) {
                     case MAIN_CITY: size = 0; break;
                     case CITY_SIZE_1: size = 1; break;
                     case CITY_SIZE_2: size = 2; break;
@@ -99,8 +100,8 @@ public class CitiesGenerator {
                     case CITY_SIZE_4: size = 4; break;
                     case CITY_SIZE_5: size = 5; break;
                     case CITY_SIZE_6: size = 6; break;
-                }
-                pw.write(city.getName() + ";" + size + ";" + city.getPosition().getX() + ";" + city.getPosition().getY() + "\n");
+                }*/
+                pw.write(city.getName() + ";" + city.getSize() + ";" + city.getPosition().getX() + ";" + city.getPosition().getY() + "\n");
             }
             pw.close();
             fw.close();

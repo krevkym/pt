@@ -11,13 +11,14 @@ public class PathFinder {
 
     private ArrayList<Integer> path = new ArrayList<>();
 
-    public PathFinder(int[][] matrixOfPredecessors) {
-        this.matrixOfPredecessors = matrixOfPredecessors;
-        this.distanceMatrix = matrixOfPredecessors;
+    public PathFinder(int[][] distanceMatrix) {
+
+        this.distanceMatrix = distanceMatrix;
+        this.matrixOfPredecessors = createMatrixOfPredecessors(distanceMatrix);
         cost = 0;
     }
 
-    private int[][] createInitialMatrix(int[][] d) {
+    private static int[][] createInitialMatrix(int[][] d) {
         int[][] p = new int[d.length][d.length];
         for (int i = 0; i < d.length; i++) {
             for (int j = 0; j < d.length; j++) {
@@ -31,7 +32,7 @@ public class PathFinder {
         return p;
     }
 
-    public void createMatrixOfPredecessors(int[][] d) {
+    public int[][] createMatrixOfPredecessors(int[][] d) {
         for (int i = 0; i < d.length; i++) {
             for (int j = 0; j < d.length; j++) {
                 if(d[i][j] == -1) {
@@ -51,11 +52,10 @@ public class PathFinder {
                         d[i][j] = d[i][k] + d[k][j];
                         p[i][j] = p[k][j];
                     }
-
                 }
             }
         }
-        this.matrixOfPredecessors = p;
+        return p;
     }
 
     public void findPath(int start, int end) {
@@ -64,11 +64,38 @@ public class PathFinder {
             }
             if(start == end) {
                 Collections.reverse(path);
-            } else if(matrixOfPredecessors[start][end] != 0) {
-                cost += distanceMatrix[start][end];
+            } else if(matrixOfPredecessors[start][end] != -1) {
+                //cost += distanceMatrix[start][end];
                 path.add(matrixOfPredecessors[start][end]);
                 findPath(start, matrixOfPredecessors[start][end]);
             }
+
+            /*if(matrixOfPredecessors[start][end] == -1) {
+                System.out.print(start + " " + end + " ");
+                path.add(end);
+            } else {
+                findPath(start, matrixOfPredecessors[start][end]);
+                findPath(matrixOfPredecessors[start][end], end);
+            }*/
+
+
+        /*if (start == end) {
+            path.add(start);
+        } else if(matrixOfPredecessors[start][end] == -1) {
+        System.out.println("Cesta neexistuje");
+        } else {
+            findPath(start, matrixOfPredecessors[start][end]);
+            path.add(end);
+        }*/
+    }
+
+
+    public int findCostInDistMat(ArrayList<Integer> path) {
+        int cost2 = 0;
+        for(int i = 0; i < path.size()-1; i++) {
+            cost2 += distanceMatrix[path.get(i)][path.get(i+1)];
+        }
+        return cost2;
     }
 
     public int getCost() {
@@ -81,6 +108,8 @@ public class PathFinder {
 
     public void clearPath() {
         this.path.clear();
+    }
+    public void clearCost() {
         this.cost = 0;
     }
 }

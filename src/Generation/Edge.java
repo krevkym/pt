@@ -1,4 +1,4 @@
-package Generation;
+/*package Generation;
 
 import java.awt.geom.Point2D;
 
@@ -7,11 +7,13 @@ public class Edge {
     private Point2D endPos;
 
     private int weight;
+    private int time;
 
     public Edge(Point2D startPos, Point2D endPos, int weight) {
         this.startPos = startPos;
         this.endPos = endPos;
         this.weight = weight;
+        //time =
     }
 
     public Point2D getStartPos() {
@@ -43,3 +45,4 @@ public class Edge {
         return "Edge: " + "startPos = " + startPos + ", endPos = " + endPos + ", weight=" + weight;
     }
 }
+*/
